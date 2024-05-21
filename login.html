@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Đăng Nhập và Đăng Ký</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: 100px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .form-container {
+        margin-top: 20px;
+    }
+    .form-container p {
+        margin: 10px 0;
+    }
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Đăng Nhập và Đăng Ký</h2>
+        <div class="form-container" id="login-form">
+            <h3>Đăng Nhập</h3>
+            <form id="loginForm" action="#" method="post" onsubmit="return validateLoginForm();">
+                <p><input type="text" placeholder="Tên đăng nhập" id="loginUsername" name="username" required></p>
+                <p><input type="password" placeholder="Mật khẩu" id="loginPassword" name="password" required></p>
+                <p><input type="submit" value="Đăng Nhập"></p>
+            </form>
+        </div>
+        <div class="form-container" id="signup-form" style="display:none;">
+            <h3>Đăng Ký</h3>
+            <form id="signupForm" action="/signup" method="post">
+                <p><input type="text" placeholder="Tên đăng nhập" name="username" required></p>
+                <p><input type="email" placeholder="Email" name="email" required></p>
+                <p><input type="password" placeholder="Mật khẩu" name="password" required></p>
+                <p><input type="submit" value="Đăng Ký"></p>
+            </form>
+        </div>
+        <p style="text-align:center;">Hoặc <a href="dk.html" target="_blank">đăng ký</a> nếu bạn chưa có tài khoản.</p>
+        <div id="successMessage" style="display: none; text-align: center; color: green;">Đăng ký thành công! Bạn sẽ được chuyển hướng trong 3 giây.</div>
+    </div>
+    
+    <script>
+        function validateLoginForm() {
+            
+            var username = document.getElementById('loginUsername').value;
+            var password = document.getElementById('loginPassword').value;
+
+            
+            if (username === "" || password === "") {
+                alert("Vui lòng nhập tên đăng nhập và mật khẩu.");
+                return false; 
+            }
+
+            
+            window.location.href = "index.html"; 
+            return false; 
+        }
+    </script>
+
+</body>
+</html>

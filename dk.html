@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký tài khoản</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: 100px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="submit"],
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"],
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover,
+    button:hover {
+        background-color: #45a049;
+    }
+    .form-container {
+        margin-top: 20px;
+    }
+    .form-container p {
+        margin: 10px 0;
+    }
+    .success-message {
+        text-align: center;
+        color: green;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Đăng ký tài khoản</h2>
+        <div class="form-container">
+            <form id="signupForm" action="/signup" method="post" onsubmit="return showSuccessMessage();">
+                <p><input type="text" placeholder="Tên đăng nhập" name="username" required></p>
+                <p><input type="email" placeholder="Email" name="email" required></p>
+                <p><input type="password" placeholder="Mật khẩu" name="password" required></p>
+                <p><input type="submit" value="Đăng Ký"></p>
+            </form>
+            <div id="successMessage" class="success-message" style="display: none;">
+                Đăng ký thành công!
+                <button onclick="goBack()">Quay lại</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSuccessMessage() {
+            document.getElementById("signupForm").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+            return false; // Ngăn không cho form gửi đi để hiển thị thông báo thành công
+        }
+
+        function goBack() {
+            window.location.href = "login.html"; // Thay đổi URL này thành URL của trang web bạn muốn liên kết
+        }
+    </script>
+
+</body>
+</html>

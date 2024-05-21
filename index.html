@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện</title>
+    <link rel="icon" type="image/x-icon" href="sen.jpg"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />           
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />          
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+        header {
+            height: 700px;
+            width: 700px;
+            background-image: url('nendau.jpg'); /* Thay đổi đường dẫn tới ảnh nền cho header */
+            background-size: cover; /* Chỉnh kích thước ảnh nền để phủ toàn bộ header */
+            background-repeat: no-repeat; /* Ngăn lặp lại ảnh nền */
+            background-position: center center; /* Căn giữa ảnh nền */
+            padding: 20px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .logo-container {
+            display: flex; /* Sử dụng flexbox để căn giữa */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            height: 100px; /* Chiều cao tùy chỉnh */
+        }
+        .logo {
+            max-width: 100px; /* Điều chỉnh kích thước logo theo nhu cầu */
+            height: auto;
+        }
+
+        header h1 {
+            margin-top: 660px;
+            color: rgba(255, 0, 47, 0.929);
+            font-size: 50px;
+        }
+
+        #section1, #section2, #section3 {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .poem1 p, .poem2 p, .poem3 p {
+            color: black;
+            margin: 0 0 10px;
+            line-height: 1.5;
+            text-align: center;
+            font-size: 25px;
+            white-space: nowrap;
+        }
+
+        .poem1 p {
+            margin-left: 120%;
+        }
+
+        .poem2 p {
+            margin-left: -450%;
+        }
+
+        .poem3 p {
+            margin-left: 100%;
+        }
+
+        .image1, .image2, .image3 {
+            width: 260px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: #ccc;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative; /* Cần thiết để đặt lớp phủ */
+        }
+
+        .image1 {
+            margin-right: 25%;
+            background-image: url('hinh1.jpg');
+        }
+
+        .image2 {
+            margin-left: 25%; /* Thay đổi canh lề của ảnh ở section 2 */
+            background-image: url('hinh2.jpg');
+        }
+
+        .image3 {
+            margin-right: 27%;
+            background-image: url('hinh3.jpg');
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        body {
+            position: relative; /* Cần thiết để tạo lớp phủ */
+            color: #fff; /* Màu chữ trắng để hiển thị rõ trên ảnh nền */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('nen.jpg'); /* Thay đổi đường dẫn tới ảnh nền của bạn */
+            background-size: cover; /* Chỉnh kích thước ảnh nền để phủ toàn bộ trang */
+            background-repeat: no-repeat; /* Ngăn lặp lại ảnh nền */
+            background-attachment: fixed; /* Giữ ảnh nền cố định khi cuộn trang */
+            background-position: center center; /* Căn giữa ảnh nền */
+            filter: blur(5px); /* Làm mờ ảnh nền */
+            z-index: -1; /* Đặt lớp phủ ở dưới cùng */
+        }
+
+        footer {
+            background-color: gray; /* Màu nền */
+            color: #fff; /* Màu chữ */
+            padding: 40px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer p a {
+            color: #fff; /* Màu chữ của liên kết */
+            text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+            transition: color 0.3s; /* Hiệu ứng chuyển đổi màu khi rê chuột qua */
+        }
+
+        footer p a:hover {
+            color: purple; /* Màu chữ khi rê chuột qua */
+        }
+
+        .list-container {
+            border: 5px solid rgb(13, 255, 0); /* Đường viền */
+            border-radius: 10px; /* Bo góc */
+            overflow: hidden; /* Loại bỏ các phần tử tràn ra khỏi container */
+            width: 80%; /* Độ rộng của container */
+            margin: 20px auto; /* Canh giữa container */
+        }
+
+        .horizontal-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between; /* Căn các mục cách đều nhau */
+            padding: 10px 20px;
+        }
+
+        .horizontal-list li {
+            margin: 0 1cm; /* Khoảng cách giữa các mục */
+        }
+
+        .horizontal-list a {
+            font-size: 20px;
+            font-weight: bold;
+            color: wheat; /* Màu chữ */
+            text-decoration: none;
+            transition: color 0.3s; /* Hiệu ứng chuyển đổi màu khi rê chuột qua */
+        }
+
+        .horizontal-list a:hover {
+            color: blue; /* Màu chữ khi rê chuột qua */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center; /* căn giữa theo chiều ngang */
+            align-items: center; /* căn giữa theo chiều dọc */
+            height: 100vh; /* chiều cao của container là 100% chiều cao của màn hình */
+        }
+
+        .button {
+            padding: 10px 40px;
+            background-color: #f200ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        pre {
+            font-size: 200%;
+            text-align: center;
+        }
+
+        h2, p:hover, pre:hover {
+            color: #ff6600; /* Màu đổi khi rê chuột qua */
+        }
+
+        h2  , p {
+            color: yellow;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .scrollable-div {
+            border: 1px solid #000;
+            overflow: auto; /* or scroll */
+        }
+
+        #back-to-top {
+            display: none; /* Ẩn nút ban đầu */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            border: none;
+            outline: none;
+            background-color: blueviolet;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        #back-to-top:hover {
+            background-color: #555;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: blue;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="scrollable-div">
+
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+
+    <header>
+        <h1>KINH - KỆ</h1>
+    </header>
+
+    
+    
+    <div class="list-container">
+        <ul class="horizontal-list">
+            <!-- Các mục liên kết -->
+            <li><a href="">THIỀN TÔNG</a></li>
+            <li><a href="index1.html" target="_blank">KINH PHÁP CÚ</a></li>
+            <li><a href="danhgia.html" target="_blank">ĐÁNH GIÁ</a></li>
+        </ul>
+    </div>
+    <section id="section1">
+        <div class="poem1">
+            <p><i>Máu thịt thảm thê, đủ vị ngon<br>
+            Chung quy thống khổ, hận khó bày<br>
+            Thử hỏi thân mình, nơi chốn ấy<br>
+            Ai dám cầm dao cắt tự thân<br></i>
+            <pre style="color: blue; margin-left: 130%; font-size: 30px;">ĐẠT MA SƯ TỔ</pre><br>
+            </p>
+        </div>
+        <div class="image1" onmouseover="showTooltip(event)" onmouseout="hideTooltip(event)">
+            <div class="tooltip">Nhất tổ Thiền Tông Trung Hoa. Tổ 30</div>
+        </div>
+    </section>
+    <section id="section2">
+        <div class="image2" onmouseover="showTooltip(event)" onmouseout="hideTooltip(event)">
+            <div class="tooltip">Lục tổ Thiền Tông Trung Hoa. Tổ 36-Tổ cuối cùng</div>
+        </div>
+        <div class="poem2">
+            <p><i>Bồ đề bổn vô thụ<br>
+            Minh cảnh diệc phi đài<br>
+            Bổn lai vô nhất vật<br>
+            Hà sứ nhạ trần ai<br></i>
+            <pre style="color: blue; margin-left: -225%; font-size: 30px;">LỤC TỔ HUỆ NĂNG</pre><br>
+            </p>
+        </div>
+    </section>
+    <section id="section3">
+        <div class="poem3">
+            <p><i>Ở đời vui đạo hãy tùy duyên<br>
+            Đói đến thì ăn, nhọc ngủ liền<br>
+            Trong nhà có báu thôi tìm kiếm<br>
+            Đối cảnh vô tâm chớ hỏi thiền<br></i>
+            <pre style="color: blue; margin-left: 90%; font-size: 30px;">PHẬT HOÀNG TRẦN NHÂN TÔNG</pre><br>
+            </p>
+        </div>
+        <div class="image3" onmouseover="showTooltip(event)" onmouseout="hideTooltip(event)">
+            <div class="tooltip">Nhất Tổ Thiền Tông VIỆT NAM</div>
+        </div>
+    </section>
+    
+    <pre>
+        Nhất sinh nhị
+        Nhị sinh tam
+        Tam sinh vạn vật
+    </pre>
+    <h2>Ba bài kệ nếu có duyên hãy đến với trang tiếp theo. Nếu không xin dừng lại và đừng phỉ báng.<p style="color: #f200ff;">ĐA TẠ</p></h2>
+
+    <div class="container">
+        <h1>click vào đây dể xem nhiều kệ hơn</h1>
+        <a href="https://hoavouu.com/a7296/57-nhung-bai-ke-hay-trong-nha-thien" target="_blank" class="button">&#128077;</a>
+    </div>
+
+    <div class="pagination">
+        <a href="#page1" class="active">1</a>
+        <span>|</span>
+        <a href="#page2" class="active">2</a>
+        <span>|</span>
+        <a href="#page3" class="active">3</a>
+        <span>|</span>
+    </div>
+    <button id="back-to-top" onclick="topFunction()">Lên đầu trang</button>
+
+
+    <footer>
+        <p>Bản quyền © 2024.NGUYỄN NHẬT TRƯỜNG - TIKTOK: <a href="https://www.tiktok.com/@_chon_nhu_" target="_blank">ChonNhu</a></p>
+    </footer>
+    </div>
+
+    
+
+    <script>
+   
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 5) {
+            document.getElementById("back-to-top").style.display = "block";
+        } else {
+            document.getElementById("back-to-top").style.display = "none";
+        }
+    }
+
+    
+    function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+    }
+
+ 
+    function showTooltip(event) {
+        var tooltip = event.target.querySelector('.tooltip');
+        tooltip.style.opacity = 1;
+    }
+
+   
+    function hideTooltip(event) {
+        var tooltip = event.target.querySelector('.tooltip');
+        tooltip.style.opacity = 0;
+    }
+    </script>
+</body>
+</html>
